@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <!--  -->
+
+
+  <!-- Custom styles for this template -->
+  <link href="/static/sidebars/sidebars.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'mdbootstrap/css/mdb.min.css'%}">
+  <link href="{% static 'css/carousel.css'%}" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+  <script>
+    console.log('its INDKIDOI')
+    var user = '{{request.user}}'
+    // const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    function getCsrFtoken(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    const csrftoken = getCsrFtoken('csrftoken')
+  </script>
+
+  <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.min.css'%}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'fontawesome/css2/font-awesome.min.css'%}">
+  <link rel="stylesheet" href="{%static 'css/index.css'%}">
+
+
+  <title>{% block title %} {%endblock%}</title>
+
+  <script>
+    var user = '{{request.user}}'
+  </script>
+  </script>
+</head>
+
+<body>
+  <div class="preloader" id="preloader">
+    <div class="box">
+      <img src="/static/images/cropped.png" alt="" width="100%">
+    </div>
+
+  </div>
+  <div class="chat">
+    <a href="">
+      <p style="text-align:center;"><img src="/static/images/whatsapp-icon.png" alt="" class="w-100"></p>
+    </a>
+  </div>
+
+
+  <script>
+    var x = document.getElementById('preloader')
+    window.addEventListener('load', function () {
+      x.style.display = 'none'
+    })
+
+    window.addEventListener('scroll', reveal)
+    function reveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var revealTop = reveals[i].getBoundingClientRect().top;
+        var revealPoint = 150;
+        if (revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active')
+        }
+      }
+    }
+  </script>
+
+  {%block content%}
+
+  {%endblock%}
+  <script>
+
+    function getCookie(name) {
+      var cookieArr = document.cookie.split(";");
+      for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        if (name == cookiePair[0].trim()) {
+          return decodeURIComponent(cookiePair[1]);
+        }
+      }
+      return null;
+    }
+
+    var cart = JSON.parse(getCookie('cart'));
+
+    if (cart == null) {
+      cart = {};
+      console.log('Cart created');
+      document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
+    } else {
+      console.log('Cart:', cart);
+    }
+
+  </script>
+  <script src="{% static 'assets/dist/js/bootstrap.min.js' %}"></script>
+</body>
+<script src="{%static 'js/index.js'%}"></script>
+
+
+</html>

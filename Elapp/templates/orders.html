@@ -1,0 +1,131 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Orders | Elphamatt {%endblock%}
+{%block content%}
+{% include  'topnav.html'%}
+
+
+{%if messages%}
+<div class="offset-lg-2 mt-1">
+    <div class="col-lg-12">
+        {% include 'messages.html' %}
+    </div>
+</div>
+{%endif%}
+{% if user.is_authenticated%}
+
+{%if orders%}
+        <div class="container mt-2">
+       
+            <div class="row">
+                <div class="col-lg-12 p-2 bg-white">
+                    <div class="table-responsive">
+              <table class="table table-borderless table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td><b>Date ordered</b></td>
+                        <td><b>Transaction id</b></td>
+                        <td><b>No of Items</b></td>
+                        <td><b>Amount paid</b></td>
+                        <td><b>Status</b></td>
+                        <td><b>Items</b></td>
+                      
+                       
+                        
+                      
+                    </tr>
+                </thead>
+                {%for order in orders%}
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>{{order.date_ordered}}</td>
+                        <td>{{order.transaction_id}}</td>
+                        <td>{{order.get_cart_items}}</td>
+                        <td>{{order.get_cart_total}}</td>
+                        <td><span class="text text-success">Delivered</span></td>
+                        <td> <a href="{% url 'order_item' order.order_id%}"class="btn-outline-success btn-rounded"  data-toggle="modal" data-target="{{modal.id}}">View items</a></td>
+                            
+                              <!-- Modal -->
+                        </td>
+                       
+                        
+                    </tr>
+                </tbody>
+                {%endfor%}
+                {%for modal in orderItems%}
+                <div class="container">
+                <div class="row" >
+                    <div class="col-xm-10 col-md-8 col-sm-10 col-lg-8 mt-3">
+                    <div class="table-responsive-lg">
+                        <table class="table table-borderless text-nowrap">
+                            <thead >
+                                <tr>
+                                    <td></td>
+                                    <td><b>Product name</b></td>
+                                    <td><b>Products price (Ksh)</b></td>
+                                    <td><b>quantity</b></td>
+                                    <td><b>Total (Ksh)</b></td>
+                                    
+                                </tr>
+                            </thead>
+                            {% for item in orderItems%}
+                            <tbody>
+                                <tr>
+                                    <td><div class="img-bx"><img src="{{item.product.image.url}}" alt="" width="50" height="50"></div></td>
+                                    <td>{{item.product.product_name}}</td>
+                                    <td>{{item.product.product_price}}</td>
+                                    <td>{{item.quantity}}</td>
+                                    <td> {{item.get_total}}</td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                            {%endfor%}
+                        </table>
+
+            
+            {%endfor%}
+              </table>
+              </table>
+               
+            </div>
+                </div>
+            </div>
+       
+        </div>
+        {%else%}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 card p-4 mt-3">
+                    <h4 class="text-center"><b>You don't have existing orders </b></h4>
+                    <h5 class="text-center"><a href="{%url 'index'%}">Start shopping today</a></h5>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        {%else%}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 card p-4 mt-3">
+                    <h4 class="text-center"><b>Please create an account to view your orders </b></h4>
+                    <h5 class="text-center"><a href="{%url 'register'%}">Register</a></h5>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+
+
+
+
+            <!-- Button trigger modal -->
+
+  
+
+{%endblock%}
+
+
+
+
+

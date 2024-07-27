@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Alarms | Elphamatt {%endblock%}
+{%block content%}
+{% include 'desktopsidebar.html' %}
+{% include 'topnav.html' %}
+{% include 'hero-section.html' %}
+{%if messages%}
+<div class=" mt-3">
+  <div class="col-lg-12">
+    {% include 'messages.html' %}
+  </div>
+</div>
+{%endif%}
+
+
+<div class="container mt-1">
+
+  <div class="row mt-1 ">
+    {% for product in page%}
+    <div class="card product mb-2 col-lg-3 mx-1 reveal">
+      <a href="{%  url 'add_item' product.product_id%}" class="text text-dark">
+    <div class="product-img bg-image hover-zoom ripple ripple-surface ripple-surface-light"  data-mdb-ripple-color="light">
+      <img src="{{product.image.url}}" 
+      class="card-img-top w-100" alt="product image" />
+    </div>
+      <div class="card-body ">
+        <div class="d-flex justify-content-between">
+          <p class="text-muted">{{product.get_type_name}}</p>
+          <p class="small text-warning"><s>Ksh {{product.previous_price}}</s></p>
+        </div>
+
+        <div class="d-flex justify-content-between mb-1">
+          <h6 class="mb-0">{{product.product_name}}</h6>
+        </div>
+        <div class="d-flex justify-content-between mb-1">
+          <div class="d-flex justify-content-between mb-1">
+            <h6 class="mb-0"><b>Ksh {{product.product_price}}</b></h6>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-1">
+        
+        </div>
+      </div>
+    </a>
+    </div>
+
+
+    {% endfor%}
+    <p>page{{page.number}}/{{page.paginator.num_pages}}</p>
+    <nav aria-label="....">
+      <ul class="pagination">
+        <li class="page-item">
+          {%if page.has_previous%}
+          <a href="{% url 'alarms'%}?page={{page.previous_page_number}}" class="page-link"
+            aria-current="page">&laquo;Previous</a>
+          {%endif%}
+        </li>
+
+        {% for num_page in page.paginator.page_range %}
+        </br>
+
+        {% if page.number == num_page %}
+        <li>
+          <a href="{% url 'alarms'%}?page={{num_page}}" class="page-link active" aria-current="page">{{num_page}}</a>
+        <li>
+          {%else%}
+        <li>
+          <a href="{% url 'alarms'%}?page={{num_page}}" class="page-link" aria-current="page">{{num_page}}</a>
+        <li>
+          {%endif%}
+          </br>
+          {%endfor%}
+        <li class="page-item">
+          {%if page.has_next%}
+          <a href="{% url 'alarms'%}?page={{page.next_page_number}}" class="page-link" aria-current="page">Next
+            &raquo;</a>
+          {%endif%}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{% include 'footer.html' %}
+</body>
+
+</html>
+{%endblock%}

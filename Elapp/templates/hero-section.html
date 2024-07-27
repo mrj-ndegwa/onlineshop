@@ -1,0 +1,159 @@
+<!-- <div class=" W-100"  style="height:100" >
+    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#4e4c4cd7"/></svg>
+    <div class="container">
+      <div class="carousel-caption text-end">
+        <h1 class="text text-info"><b>Access Control systems</b></h1>
+        <p>We also offer high quality access control systems</p>
+        <p><a class="btn btn-lg btn-primary" href="{% url 'accesscontrol'%}">Browse products</a></p>
+      </div>
+    </div>
+</div> -->
+
+
+<header>
+    <!-- Intro settings -->
+    <style>
+      /* Default height for small devices */
+      #intro-example {
+        height: 300px;
+      }
+      @media (min-width: 992px) {
+        #intro-example {
+          height: 200px;
+        }
+      }
+    </style>
+  
+    <!-- Background image -->
+     {% if cameras%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images//3.png');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class=" text text-light mt-2">
+            <h1 class="mb-3 text-white ">Products/ <a href="text text-info">cctv</a></h1>
+            <h5 class="mb-6">
+              CCTV cameras and accessories
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if accesscontrol%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/bgacceess.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Accesscontrol</a></h1>
+            <h5 class="mb-6">
+              Accesscontrol systems
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if Accessories%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/accessories.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Accessories</a></h1>
+            <h5 class="mb-6">
+              Accessories
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if all%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/accessories.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">All categories</a></h1>
+            <h5 class="mb-6">
+              Browse through all our products
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+
+
+    {% if intercom%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/bgacceess.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Intercom systems</a></h1>
+            <h5 class="mb-6">
+              Video door phone systems
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if fence%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/bgacceess.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Fence</a></h1>
+            <h5 class="mb-6">
+              Electric fence products and accessories
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if gates%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/bgacceess.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Gates</a></h1>
+            <h5 class="mb-6">
+              Automatic gate products and accessories
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    {% if alarms%}
+    <div id="intro-example" class="p-5 text-center bg-image "
+      style="background-image: url('/static/images/bgacceess.jpg');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white mt-2">
+            <h1 class="mb-3 text-white">Products/ <a href="text text-info">Alarms</a></h1>
+            <h5 class="mb-6">
+              Security alarms and accessories
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+    <!-- Background image -->
+  </header>

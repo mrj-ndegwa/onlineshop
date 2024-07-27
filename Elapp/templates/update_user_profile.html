@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}profile | Elphamatt{%endblock%}
+{%block content%}
+{% include 'topnav.html'%}
+
+<body style="background-color: #eee;">
+<div class="container mt-5 offset-lg-2">
+
+  <div class="row mt-3">
+   
+    <div class="col-lg-10  mb-5" style="background-color: white;box-shadow:0 3px 5px rgba(0, 0, 0, 0.1);">
+      <div class="prof-img">
+        {% if user.image %}
+        <img src="{{user.image.url}}" alt="" class="user-img" width="110" height="120">
+        {%else%}
+        <img src="/static/images/avatar.png" alt="" class="user-img" width="110" height="100">
+        {%endif%}
+      </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <table class="table table-borderless py-3">
+                <tbody>
+                  <tr>
+                    {{form}}
+                  </tr>
+                <tr>
+                  <td><button type="submit" class="btn btn-info">Save changes</button></td>
+                </tr>
+                </tbody>
+               
+              </table>
+
+        </form>
+        
+  </div>
+</div>
+</div>
+<div class="text-center p-4" style="background-color:#333;color:#eee;">
+  © 2024 Copyright:
+  <a class="text-reset fw-bold" href="#">iT solutions.com</a>
+</div>
+
+</body>
+{%endblock%}

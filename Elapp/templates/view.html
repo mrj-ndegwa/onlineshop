@@ -1,0 +1,139 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Cart | Elphamatt {%endblock%}
+{%block content%}
+{% include 'desktopsidebar.html' %}
+{% include 'cookies.html' %}
+{% include 'topnav.html' %}
+
+<div class="container">
+  {%if messages%}
+    {% include 'messages.html' %}
+    {%endif%}
+
+  
+  <div class="row bg-body rounded mt-3 " >
+ 
+    {% if product%}
+  
+    <div class="col-lg-5 mt-1">
+      <p ><img src="{{product.image.url}}" alt="" width="100%" style="max-height:400px;"></p>
+    </div>
+    <div class="col-lg-7 mt-5 ">
+      <h5><b>{{product.product_name}}</b></h5>
+      <p class="opacity-75">Category: {{product.get_category_name}}</p>
+      <p class="opacity-75">Brand:{{product.get_type_name}}</p>
+      
+    
+       
+        <br>
+        <h5>Ksh {{product.product_price}}</h5>
+      <hr>
+      <p><span class="price-btn"><button id="update-cart" class="btn btn-info update-cart" data-action="add"
+            data-product="{{product.id}}">Add to cart <i class="fa fa-shopping-cart"></i></button></span> <span
+          class="price text-dark mb-0"></span>
+            <button class="btn btn-info" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">View description</button>
+          </p>
+        <div class="description mb-3">
+            <div class="row collapse multi-collapse"  id="multiCollapseExample1">
+              <h4 class="opacity-75">Product description</h4>
+              <div class="col">
+                <div >
+                  <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                  <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+        </div>
+   
+  </div>
+</div>
+</div>
+<div class="container o">
+  <p><a href="#">&laquo;  More related products &raquo;</a></p>
+  <div class="row">
+    {% for product in page%}
+    <div class="card product mb-1 col-lg-3 mx-1 reveal">
+      <a href="{%  url 'add_item' product.product_id%}" class="text text-dark">
+        <span class="badge badge-success">Sale</span>
+    <div class="product-img bg-image hover-zoom ripple ripple-surface ripple-surface-light"  data-mdb-ripple-color="light">
+      <img src="{{product.image.url}}" 
+      class="card-img-top w-100" alt="product image" />
+    </div>
+      <div class="card-body ">
+        <div class="d-flex justify-content-between">
+          <p class="text-muted">{{product.get_type_name}}</p>
+          <p class="small text-warning"><s>Ksh {{product.previous_price}}</s></p>
+        </div>
+        <div class="d-flex justify-content-between mb-1">
+          <h6 class="mb-0">{{product.product_name}}</h6>
+        
+        </div>
+       
+
+        <div class="d-flex justify-content-between mb-1">
+          <div class="d-flex justify-content-between mb-1">
+            <h6 class="mb-0"><b>Ksh {{product.product_price}}</b></h6>
+          </div>
+        </div>
+     
+        
+      </div>
+    </a>
+    </div>
+    {% endfor%}
+    <p>page{{page.number}}/{{page.paginator.num_pages}}</p>
+    <nav aria-label="....">
+      <ul class="pagination">
+        <li class="page-item">
+          {%if page.has_previous%}
+          <a href="{% url 'add_item' product.product_id%}?page={{page.previous_page_number}}" class="page-link"
+            aria-current="page">&laquo;Previous</a>
+          {%endif%}
+        </li>
+
+        {% for num_page in page.paginator.page_range %}
+        </br>
+
+        {% if page.number == num_page %}
+        <li>
+          <a href="{% url 'add_item' product.product_id%}?page={{num_page}}" class="page-link active" aria-current="page">{{num_page}}</a>
+        <li>
+          {%else%}
+        <li>
+          <a href="{% url 'add_item' product.product_id%}?page={{num_page}}" class="page-link" aria-current="page">{{num_page}}</a>
+        <li>
+          {%endif%}
+          </br>
+
+          {%endfor%}
+
+        <li class="page-item">
+          {%if page.has_next%}
+          <a href="{% url 'add_item' product.product_id%}?page={{page.next_page_number}}" class="page-link" aria-current="page">Next
+            &raquo;</a>
+          {%endif%}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{%else%}
+<h2>Oops an error has occured please go back <a href="#">Back</a></h2>
+{%endif%}
+
+{% include 'footer.html'%}
+
+
+</html>
+{%endblock%}

@@ -1,0 +1,38 @@
+<div id="mySidenav" class="sidenav">
+    <div class="" style="display: flex;">
+      <img src="/static/images/cropped.png" alt="" width="42" height="40" style="margin-left: 10px;"><b class="mt-2 p-1 text-dark">Elphamatt</b>
+    </div>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    {%if user.is_authenticated%}
+    <div class="col-l-g-10 mb-5 mx-1 mt-4 user">
+      <i class="fa fa-user"></i>
+      {{user}}
+    </div>
+    {%else%}
+    <div class="col-l-g-10 mb-5 mx-1 mt-4 user">
+      <a href="{%url 'login'%}"><i class="fa fa-user"></i>Sign in</a>
+    </div>
+    {%endif%}
+    <ul>
+        <li><a href="/"><i class="fa fa-home"></i> Home </i></a></li>
+      </li>
+      <li><a href="/cctv_cameras"><i class="fa fa-arrow-right"></i> Cctv camera</a>
+      </li>
+      <li><a href="{%url 'alarms'%}"><i class="fa fa-arrow-right"></i>security alarms</a></li>
+      <li><a href="{%url 'accessories'%}"><i class="fa fa-arrow-right"></i>accessories</a></li>
+      <li><a href="{%url 'fence'%}"><i class="fa fa-arrow-right"></i>Electric fences</a></li>
+      <li><a href="{%url 'accesscontrol'%}"><i class="fa fa-arrow-right"></i>AccessControl</a></li>
+      <li><a href="{%url 'gates'%}"><i class="fa fa-arrow-right"></i> Automatic gates</a></li>
+      <li><a href="#"><i class="fa fa-cog"></i>settings</a></li>
+      <li><a href="#"><i class="fa fa-question-circle"></i>Help</a></li>
+      {%if user.is_authenticated%}
+      <li><a href="{% url 'logout'%}"><i class="fa fa-sign-in"></i>Logout</a></li>
+      {%else%}
+      <li><a href="{% url 'login'%}"><i class="fa fa-sign-in"></i>Login</a></li>
+      {%endif%}
+
+    </ul>
+    <p style="font-size:x-small" class="text-center">Elphamatt tech solutions | <span
+        id="date"></span></p>
+  </div>
+  

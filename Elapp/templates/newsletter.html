@@ -1,0 +1,97 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="newsletter  reveal" id="letter">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+	<div class="content">
+		<h3><b>SUBSCRIBE TO OUR NEWSLETTER</b></h3>
+        <p class="p">Sign up to our newsletter to get weekly updates on the newest products, discounts and innovations.</p>
+        <form action="" class="" id="nwsletter" method="post">
+            {%csrf_token%}
+    	<div class="input-group">
+            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+            <span class="input-group-btn">
+            <button class="btn" id="btn" type="submit">Subscribe Now</button></form>
+         </span>
+          </div>
+	</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<style>
+    .newsletter {
+padding: 80px 0;
+background:#3a3a3ac5;
+}
+
+.newsletter .content {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.newsletter .content h3,.p {
+color: white; }
+.newsletter .content .form-control {
+height: 50px;
+border-color: #ffffff;
+border-radius:0;
+}
+.newsletter .content.form-control:focus {
+box-shadow: none;
+border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+min-height: 50px; 
+border-radius:0;
+background: #243c4f;
+color: #fff;
+font-weight:600;
+}
+</style>
+
+<script>
+    var form = document.getElementById('nwsletter')
+    var submitBtn = document.getElementById('btn')
+    submitBtn.addEventListener('submit',function(){
+        submitFormData()
+    })
+</script>
+<script>
+
+    function submitFormData() {
+        userData = {
+            'email': null,
+        }
+        userData.email = form.email.value
+        fetch("/subscribe/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken,
+            },
+            body: JSON.stringify({ 'form': userData}),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+    
+            })
+            .then((data) => {
+                console.log('success', data)
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+    
+    
+    </script>

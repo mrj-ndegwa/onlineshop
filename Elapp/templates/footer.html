@@ -1,0 +1,124 @@
+
+
+<style>
+  /* Default height for small devices */
+  #footer {
+   height:950px;
+  }
+  @media (min-width: 992px) {
+    #footer {
+      height:300px;
+    }
+  }
+</style>
+
+
+
+  
+<footer class="text-lg-start bg-body-tertiary text-muted bg-image text-light" style="background-image: url('/static/images/bgacceess.jpg');" id="footer">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <div class="me-5 d-none d-lg-block footer " style="color:white;">
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="footer text-white  mask" style="background-color: rgba(0, 0, 0, 0.856);">
+    <div class="container text-start text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>
+           <b> Elphamatt</b>
+          </h6>
+          <p>
+
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="{%url 'cameras'%}" class="text-reset">CCTV cameras</a>
+          </p>
+          <p>
+            <a href="{%url 'alarms'%}" class="text-reset">Security alarms</a>
+          </p>
+          <p>
+            <a href="{%url 'gates'%}" class="text-reset">Automatic gates</a>
+          </p>
+          <p>
+            <a href="{%url 'accesscontrol'%}" class="text-reset">Access control systems</a>
+          </p>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="{%url 'index'%}" class="text-reset">Home</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="{%url 'orders'%}" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="text-start col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fa fa-home me-3"></i>Nairobi, Kenya</p>
+          <p>
+            <i class="fa fa-envelope me-3"></i>
+            email@email
+          </p>
+          <p><i class="fa fa-phone me-3"></i> +254742161366</p>
+          <p><i class="fa fa-print me-3"></i> +254740258797</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+ 
+  <!-- Copyright -->
+</footer>
+
+
+
+<div class="text-center p-2 text text-white " style="background-color:#0000009b;">
+    © <span id="date"></span> Copyright:
+    <a class="text-reset fw-bold" href="">Elphamatt solutions.co.ke</a>
+    <script>
+      var d=new Date()
+      var year=d.getFullYear();
+      document.getElementById('date').innerHTML=year
+    </script>
+  </div>

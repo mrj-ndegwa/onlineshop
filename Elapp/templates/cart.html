@@ -1,0 +1,122 @@
+{% extends 'base.html'%}
+{% load static%}
+{% load static %}
+{%block title%}Cart | Elphamatt {%endblock%}
+{%block content%}
+{% include 'desktopsidebar.html' %}
+{% include 'topnav.html' %}
+
+
+<div class="container mt-3 mb-5">
+  {%if messages%}
+<div class=" mt-1">
+    <div class="col-lg-12">
+        {% include 'messages.html' %}
+    </div>
+</div>
+{%endif%}
+  {%if items%}
+  {% if not order.complete %}
+  <div class="row">
+    <div class="col-xm-10 col-md-9 col-sm-10 col-lg-9 table-responsive-lg">
+      <div class="">
+        <table class="table table-borderless table-hover ">
+          <thead>
+            <tr>
+              <td></td>
+              <td><b>Product name</b></td>
+              <td><b>Products price (Ksh)</b></td>
+              <td></td>
+              <td colspan="1"><p class="text-center"><b>quantity</b></p></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+          {% for item in items%}
+          <tbody>
+            <tr>
+              <td>
+                <div class="img-bx"><img src="{{item.product.image.url}}" alt="" width="50" height="50"></div>
+              </td>
+              <td>{{item.product.product_name}}</td>
+              <td>{{item.product.product_price}}</td>
+
+              <td>
+                <p style="display: flex;"><span></span>
+                  <span><button id="update-cart" data-action="add" class="btn btn-outline-dark btn-sm update-cart"
+                      data-product="{{item.product.id}}"><b><i class="fa fa-plus"></i></b></button></span>
+                </p>
+              </td>
+              <td>
+                <input type="number" class="quantity-input form-control" data-product="{{item.product.id}}" value="{{item.quantity}}" style="text-align: center;" disabled>
+
+              </td>
+              
+              
+              <td>
+                <button id="update-cart" data-action="remove" data-product="{{item.product.id}}"
+                  class="btn btn-outline-dark btn-sm mx-2 update-cart"><b><i class="fa fa-minus"></i></b></button>
+              </td>
+              <td class="text-nowrap">
+                <button id="update-cart" class="btn  btn-danger btn-rounded btn-sm update-cart  "data-product="{{item.product.id}}" data-action="delete"><span >remove</span><span> &times;</span></button>
+              </td>
+             
+            </tr>
+
+          </tbody>
+          {%endfor%}
+        </table>
+      </div>
+      <style>
+      </style>
+    </div>
+    <div class="card col-lg-3 col-md-10 col-sm-10 mb-3 text summary-card" style="padding: 0px !important;">
+      <div class="card-header bg-info light text" style="border-bottom: none !important;color:white;"><i
+          class="fa fa-shopping-basket mx-2"></i><b>order items</b></div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">
+        <p><span>
+            <p><b>Total Items</b></p>
+            <h3><b>{{cartItems}}</b></h3>
+          </span></p>
+        <p class="card-text">
+        <p><span>
+            <p><b>Shipping cost(Ksh)</b></p>
+            <h3><b>500</b></h3>
+          </span></p>
+        <p><span>
+            <p><b>Total Amount (Ksh)</b></p>
+            <h3><b>{{order.get_cart_total}}</b></h3>
+          </span></p>.</p>
+        <a href="{% url 'checkout'%}" class="btn btn-info ">Proceed to checkout <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endif%}
+{%else%}
+<div class="card">
+  <h2 class="mt-5 py-3 mb-3 text-center">Your cart is empty</h2>
+  <div class="d-flex justify-content-center">
+    <div class="" style="height: 250px;width: 250px;">
+      <img src="/static/images/empty.png" alt="" class="w-100">
+    </div>
+  </div>
+  <p class="mb-3 text-center me-0"><a href="/" class="btn btn-outline-info">start shopping <i class="fa fa-arrow-right"></i></a></p>
+</div>
+
+{%endif%}
+</div>
+</div>
+<div class="text-center p-4 bg-dark text text-white" style="background-color: rgba(0, 0, 0, 0.05);">
+  © <span id="date"></span> Copyright:
+  <a class="text-reset fw-bold" href="">Elphamatt solutions.co.ke</a>
+  <script>
+    var d = new Date()
+    var year = d.getFullYear();
+    document.getElementById('date').innerHTML = year
+  </script>
+</div>
+{%endblock%}
